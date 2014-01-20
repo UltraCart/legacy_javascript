@@ -1,0 +1,398 @@
+#emptyCart{
+  display:block;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333333;
+  margin:30px;
+  min-height:300px;
+}
+
+/* business rules determine which of these are shown */
+#shoppingCart{ display:none; }
+#emailContainer{ display:none; }
+#emailConfirmContainer{ display:none; }
+
+/* business rules determine which of these are shown */
+#ucGoogleCheckoutSection { display:none; }
+#ucPayPalCheckoutSection { display:none; }
+#ucUltraCartCheckoutSection { display:none; }
+#ucGoogleConjunction1 { display:none; }
+#ucGoogleConjunction2 { display:none; }
+#ucPayPalConjunction { display:none; }
+#continueShoppingContainer{ display:none; }
+#removeItemHeader{ display:none; }
+#couponContainer{ display:none;}
+#shippingTitleContainer{ display:none; }
+#billingTitleContainer{ display:none; }
+
+#securelink {
+  font-size: 10px;
+}
+
+#cartItemsTable{
+  width:720px;
+  border:2px solid black;
+}
+
+#cartItemsTable thead th{
+  font-weight:bold;
+  font-size:12px;
+  border-bottom:1px solid black;
+  padding-left:5px;
+  padding-right:5px;
+  padding-top:5px;
+  padding-bottom:5px;
+}
+
+#cartItemsTable tbody td{
+  font-size:12px;
+  border-bottom:1px solid black;
+  padding-top:2px;
+  padding-bottom:2px;
+  padding-left:5px;
+  padding-right:5px;
+}
+
+#cartItemsTable tfoot td{
+  font-size:12px;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-left:5px;
+  padding-right:5px;
+}
+
+
+#cartItemsContainer{
+  margin-bottom: 10px;
+}
+
+#cartItemsTable .left_header{
+  text-align:left;
+}
+
+#cartItemsTable .right_header{
+  text-align:right;
+}
+
+#cartItemsTable .item_thumbnail{
+  text-align:center;
+  vertical-align:top;
+}
+
+#cartItemsTable .item_id{
+  text-align:center;
+  vertical-align:top;
+}
+
+#cartItemsTable .item_qty{
+  text-align:right;
+  vertical-align:top;
+  padding-right:10px;
+  font-size:12px;
+}
+
+#cartItemsTable .item_qty input{
+  text-align:left;
+  font-size:12px;
+}
+
+
+#cartItemsTable .item_desc{
+  text-align:left;
+  vertical-align:top;
+  width:350px;
+}
+
+#cartItemsTable .item_amt{
+  text-align:right;
+  vertical-align:top;
+}
+
+#cartItemsTable .item_remove{
+  text-align:center;
+  vertical-align:top;
+}
+
+#cartItemsTable .subtotal_label{
+  text-align:right;
+}
+
+#subtotal1, #discount1, #subtotal_label1, #discount_label1{
+  text-align:right;
+  display:none;
+}
+
+#subtotal2{
+  text-align:right;
+}
+
+.subtotal{
+  color:green;
+}
+.discount, .required{
+  color:red;
+}
+
+.field_container_error input{
+  background-color:red;
+}
+
+.field_container_error select{
+  background-color:red;
+}
+
+
+.remove_link{
+  cursor:pointer;
+  color:blue;
+}
+
+.update_link{
+  cursor:pointer;
+  color:blue;
+}
+
+.remove_link{
+  cursor:pointer;
+  color:blue;
+}
+
+.coupon_link{
+  cursor:pointer;
+  color:blue;
+}
+
+.google_link{
+
+}
+
+.paypal_link{
+
+}
+
+.finalize_link{
+  cursor:pointer;
+}
+
+
+.acknowledge_link{
+  cursor:pointer;
+  color:blue;
+  font-size:10px;
+}
+
+.fake_hyper{
+  cursor:pointer;
+}
+
+
+
+.ajaxLoad{
+  float:right;
+  display:none;
+}
+
+
+
+#error_container {
+  border: #DD9988 1px solid;
+  background-color: #FFFFD5;
+  color: #990000;
+  padding:5px;
+  font-size:12px;
+  display:none;
+}
+
+#error_messages{
+  padding-top:2px;
+  padding-bottom:2px;
+}
+
+#error_messages li{
+  padding-top:1px;
+  padding-bottom:1px;
+}
+
+
+#error_container img {
+  float:left;
+  width: 17px;
+  height: 17px;
+  padding-right:5px;
+}
+
+.error_title{
+  font-weight: bold;
+}
+
+.couponWrapper{
+  float:right;
+}
+
+.couponHeader {
+	font-family: Arial, serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #000000;
+}
+.couponText {
+	font-family: Arial, sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+.couponField {
+	font-family: Arial, sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+
+.applyCouponButton {
+  cursor:pointer;
+}
+
+#couponsApplied{
+  text-align:left;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.colorHeader {
+	font-family: Arial, serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: #CC0000;
+}
+.colorSubHeader {
+	font-family: Arial, serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #CC0000;
+}
+
+#billingTable{
+  display: none;
+  width:325px;
+}
+
+#shippingTable{
+  width:325px;
+}
+
+.ucFormField {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.ucFormLabel {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+
+#shipFrom{
+  text-align: left;
+  font-size: 11px;
+  font-family: arial, serif;
+  padding-left: 10px;
+  margin-bottom:10px;
+}
+
+#billingDifferentContainer{
+  margin-bottom:10px;
+  padding-left:10px;
+}
+
+
+.tax {font-weight:bold;color:#B43E05;}
+
+#summaryContainer{
+  width:140px;
+  margin-left:10px;
+}
+
+#summaryHeader{
+	font-family: Arial, serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #CC0000;
+  width:inherit;
+}
+#summarySubtotal{
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+  width:inherit;
+}
+#summaryTax{
+  font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+  width:inherit;
+}
+#summaryShipping{
+  font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+  width:inherit;
+}
+#summaryTotal{
+  font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+  width:inherit;
+}
+
+.summaryLabel{
+  text-align:left;
+  width:50px;
+  float:left;
+}
+
+.summaryField{
+  text-align:right;
+  width:90px;
+  float:right;
+}
+
+#creditCardVerificationNumber{
+  margin-bottom:15px;
+}
+
+.ucFormLabel {
+  color:#000;
+}
+
+#shippingContainer{
+  font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+  font-size: 11px;
+  color: #333333;
+  width:inherit;
+}
+
+.shippingMethod{
+  font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+  width:inherit;
+}
+
+.shippingField{
+  font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.shippingName{
+  text-align:left;
+  width:180px;
+  float:left;
+}
+
+.shippingPrice{
+  text-align:right;
+  width:50px;
+  float:right;
+}
+
+.ucSmall {
+    font-size: 10px;
+}

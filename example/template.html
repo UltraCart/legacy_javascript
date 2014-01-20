@@ -1,0 +1,401 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="css/checkout.css" rel="stylesheet" type="text/css">
+    <title>TITLE GOES HERE</title>
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery.json-2.2.min.js" type="text/javascript"></script>
+    <script src="js/checkoutapi-2.1.9.js" type="text/javascript"></script>
+    <script src="js/checkout.js" type='text/javascript'></script>
+
+    <!--Custom Head Markup-->
+
+    <!--/Custom Head Markup-->
+  </head>
+  <body>
+
+  <!--Above Outer Table-->
+  <!--/Above Outer Table-->
+
+<!--EmptyCart-->
+<div id='emptyCart'>
+  <h4>Loading cart...  Please wait.&nbsp;&nbsp;&nbsp;<img src="images/ajax-loader.gif" alt="Please Wait" class='ajaxLoad' /></h4>
+</div>
+<!--/EmptyCart-->
+<!--/ShoppingCart-->
+<div id='error_container'>
+  <img src='images/info.gif' alt='info' />
+  <span class='error_title'>Important Message(s):</span>
+  <div id='error_messages'></div>
+  <div id='error_footer'>
+    <span onclick='hideError()' class='acknowledge_link'>[acknowledge]</span>
+  </div>
+</div>
+
+<div id='shoppingCart'>
+
+    <div id='htmlBeforeItems'>
+    <!--Above Cart Table-->
+    <!--/Above Cart Table-->
+    </div>
+    <!--Cart Items-->
+    <div id='cartItemsContainer'>
+      <table id='cartItemsTable' summary='cart' cellspacing='0' cellpadding='0'>
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>Item</th>
+            <th>Qty</th>
+            <th class='left_header'>Description</th>
+            <th class='right_header'>Amount</th>
+            <th>&nbsp;<span id='removeItemHeader'>Remove</span>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody id='cartItemsBody'>
+        <tr><td colspan='6'>Loading items...</td></tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan='3'>
+            <span id='continueShoppingContainer' title='Continue Shopping'><a href='index.html' title='Continue Shopping'><img src='images/continue.gif' alt='continue shopping' style='border:0'/></a></span>
+            <span id='updateQuantityContainer' onclick='updateQty()' title='Update Quantity' class='update_link'><img src='images/update.gif' alt='update quantity'/></span>
+          </td>
+          <td class='subtotal_label'>
+            <div class='subtotal' id='subtotal_label1'>Subtotal before discounts:</div>
+            <div class='discount' id='discount_label1'>Discount:</div>
+            <div class='subtotal' id='subtotal_label2'>Subtotal:</div>
+          </td>
+          <td>
+            <div class='subtotal' id='subtotal1'></div>
+            <div class='discount' id='discount1'></div>
+            <div class='subtotal' id='subtotal2'></div>
+          </td>
+          <td>&nbsp;</td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+    <!--/Cart Items-->
+    <div id='htmlAfterItems'>
+    <!--Below Cart Table-->
+    <!--/Below Cart Table-->
+    </div>
+
+
+    <div id="couponContainer">
+      <div class='couponWrapper'>
+      <table summary=''>
+        <tbody>
+          <tr>
+            <td>
+              <div id='couponsApplied'></div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="couponHeader"><label for='couponCode'>Enter coupon code:</label></span></td>
+          </tr>
+          <tr>
+            <td><input id="couponCode" size="21" class="couponField" type="text" /></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="applyCouponButton" onclick='applyCoupon()'>
+                <img src='images/applyCoupon.gif' alt="apply coupon" />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+
+    <!--Above Google Checkout-->
+    <!--/Above Google Checkout-->
+    <div id="ucGoogleCheckoutSection" class="colorSubHeader">
+      <span class='google_link fake_hyper'>
+        <img id='googleImage' src="images/google_checkout.gif" alt='Google Checkout'/>
+      </span>
+      <span id='ucGoogleConjunction1'><br /> - or use - <br /><br /></span>
+      <span id='ucGoogleConjunction2'><br /> - or use our secure order form below. -<br /><br /></span>
+    </div>
+
+    <div id="ucPayPalCheckoutSection" class="colorSubHeader">
+      <span class='paypal_link fake_hyper' onclick='payPalCheckout()'>
+        <img id='paypalImage' src="images/paypal.gif" alt='PayPal Checkout' />
+      </span>
+      <span id='ucPayPalConjunction'><br /> - or use our secure order form below. -<br /><br /></span>
+    </div>
+
+    <div id='ucUltraCartCheckoutSection'>
+      <!--Above Shipping/Billing Address-->
+      <!--/Above Shipping/Billing Address-->
+
+      <table summary=''border="0" cellpadding="10" cellspacing="0">
+        <tbody>
+          <tr>
+            <td valign="top">
+
+              <div id="shippingTable">
+                <div class="colorSubHeader">SHIPPING ADDRESS</div>
+                <div id='shippingTitleContainer' class="ucFormLabel">
+                  <label for='shippingTitle'>Title:</label><span class="fieldNote" id="shippingTitleNote"></span><br />
+                  <input name='shippingTitle' id="shippingTitle" size="12" maxlength="30" style="width: 190px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='shippingFirstName'>First Name:</label><span class="fieldNote" id="shippingFirstNameNote"></span><br />
+                  <input name='shippingFirstName' id="shippingFirstName" size="12" maxlength="30" style="width: 190px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='shippingLastName'>Last Name:</label><span class="fieldNote" id="shippingLastNameNote"></span><br />
+                  <input name='shippingLastName' id="shippingLastName" size="16" maxlength="30" style="width: 190px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <label for='shippingCompany'>Company:</label><span class="fieldNote" id="shippingCompanyNote"></span><br />
+                  <input name='shippingCompany' id="shippingCompany" size="30" maxlength="50" style="width: 315px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='shippingAddress1'>Address 1:</label><span class="fieldNote" id="shippingAddress1Note"></span><br />
+                  <input name='shippingAddress1' id="shippingAddress1" size="30" maxlength="32" style="width: 315px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <label for='shippingAddress2'>Address 2:</label><span class="fieldNote" id="shippingAddress2Note"></span><br />
+                  <input name='shippingAddress2' id="shippingAddress2" size="30" maxlength="32" style="width: 315px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='shippingCity'>City:</label><span class="fieldNote" id="shippingCityNote"></span><br />
+                  <input name='shippingCity' id="shippingCity" size="30" maxlength="32" style="width: 315px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='shippingState'>State/Province/Region:</label><span class="fieldNote" id="shippingStateNote"></span><br />
+                  <input name='shippingState' id="shippingState" size="10" maxlength="32" style="width: 190px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='shippingZip'>Zip/Postal Code:</label><span class="fieldNote" id="shippingZipNote"></span><br />
+                  <input name='shippingZip' id="shippingZip" size="10" maxlength="20" style="width: 190px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='shippingCountry'>Country:</label><span class="fieldNote" id="shippingCountryNote"></span><br />
+                  <select name='shippingCountry' id="shippingCountry" style="width: 315px;" class="ucFormField"></select>
+                </div>
+
+                <div class="ucFormLabel">
+                  <label for='shippingPhone'>Daytime Phone:</label><span class="fieldNote" id="shippingPhoneNote"></span><br />
+                  <input name='shippingPhone' id="shippingPhone" size="14" maxlength="25" style="width: 315px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel" id='emailContainer'>
+                  <label for='email'>Email Address:</label><span class="fieldNote" id="emailNote"></span><br />
+                  <input name='email' id="email" size="30" maxlength="100" style="width: 315px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel" id='emailConfirmContainer'>
+                  <span class="required">*</span>
+                  <label for='emailConfirm'>Email Address (Confirm):</label><span class="fieldNote" id="emailConfirmNote"></span><br />
+                  <input name='emailConfirm' id="emailConfirm" size="30" maxlength="100" style="width: 315px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <input name="mailingList" id="mailingList" checked="checked" type="checkbox" />&nbsp;<label for='mailingList'>Please send me email updates of news and special offers</label>
+                </div>
+
+              </div>
+
+
+
+              <!-- End of Shipping Table -->
+
+            </td>
+            <!-- billing cell -->
+            <td id="billingTableCell" valign="top">
+            <!-- Billing Table -->
+
+              <div id="billingTable">
+                <div class="colorSubHeader">BILLING ADDRESS</div>
+                <div id='billingTitleContainer' class="ucFormLabel">
+                  <label for='billingTitle'>Title:</label><span class="fieldNote" id="billingTitleNote"></span><br />
+                  <input name='billingTitle' id="billingTitle" size="12" maxlength="30" style="width: 190px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='billingFirstName'>First Name:</label><span class="fieldNote" id="billingFirstNameNote"></span><br />
+                  <input id="billingFirstName" size="12" maxlength="30" style="width: 190px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='billingLastName'>Last Name:</label><span class="fieldNote" id="billingLastNameNote"></span><br />
+                  <input id="billingLastName" size="16" maxlength="30" style="width: 190px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <label for='billingCompany'>Company:</label><span class="fieldNote" id="billingCompanyNote"></span><br />
+                  <input id="billingCompany" size="30" maxlength="50" style="width: 315px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='billingAddress1'>Address 1:</label><span class="fieldNote" id="billingAddress1Note"></span><br />
+                  <input id="billingAddress1" size="30" maxlength="32" style="width: 315px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <label for='billingAddress2'>Address 2:</label><span class="fieldNote" id="billingAddress2Note"></span><br />
+                  <input id="billingAddress2" size="30" maxlength="32" style="width: 315px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='billingCity'>City:</label><span class="fieldNote" id="billingCityNote"></span><br />
+                  <input id="billingCity" size="30" maxlength="32" style="width: 315px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='billingState'>State/Province/Region:</label><span class="fieldNote" id="billingStateNote"></span><br />
+                  <input id="billingState" size="10" maxlength="32" style="width: 190px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='billingZip'>Zip/Postal Code:</label><span class="fieldNote" id="billingZipNote"></span><br />
+                  <input id="billingZip" size="10" maxlength="20" style="width: 190px;" class="ucFormField" type="text" />
+                </div>
+
+                <div class="ucFormLabel">
+                  <span class="required">*</span>
+                  <label for='billingCountry'>Country:</label><span class="fieldNote" id="billingCountryNote"></span><br />
+                  <select id="billingCountry" style="width: 315px;" class="ucFormField"></select>
+                </div>
+
+              </div>
+              <!-- /Billing Table -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="ucFormLabel" id='billingDifferentContainer'>
+        <input id="billingDifferent" type="checkbox" onclick="showHide(this, 'billingTable')">
+        <label for='billingDifferent'>Check here if billing information is <strong>different</strong> from shipping information.</label>
+      </div>
+
+      <!--Below Shipping/Billing Address-->
+      <!--/Below Shipping/Billing Address-->
+      <div id='shipFrom'>
+        <!--Ship From-->
+        <!--/Ship From-->
+      </div>
+
+      <!-- Shipping and summary table -->
+      <table summary=''border="0" cellpadding="0" cellspacing="10">
+        <tbody><tr>
+          <td valign="top">
+            <!-- Shipping methods -->
+            <div id='shippingContainer'>
+              <div id='shippingHeader' class='colorSubHeader'>SHIPPING PREFERENCE</div>
+              <div id='shippingMethods'>Loading...</div>
+            </div>
+            <!-- /shipping methods -->
+          </td>
+          <td valign="top">
+            <!-- summary -->
+            <div id="summaryContainer">
+              <div id='summaryHeader' class='colorSubHeader'>SUMMARY</div>
+              <div id='summarySubtotal'></div>
+              <div id='summaryTax'></div>
+              <div id='summaryShipping'></div>
+              <div id='summaryTotal'></div>
+            </div>
+            <!-- /summary -->
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <br />
+
+      <!--Above Payment Information-->
+      <!--/Above Payment Information-->
+      <div id='creditCardContainer'>
+        <div id='creditCardHeader'><span class="colorSubHeader">CREDIT CARD PAYMENT</span></div>
+        <div id='creditCardTypeLabel'><div class="ucFormLabel"><span class="required">*</span><label for='creditCardType'>Credit Card Type:</label></div></div>
+        <div id='creditCardTypeField'>
+          <select id="creditCardType" style="width: 250px;" class="ucFormField"></select>
+        </div>
+        <div id='creditCardNumberLabel'><div class="ucFormLabel"><span class="required">*</span><label for='creditCardNumber'>Credit Card #:</label></div></div>
+        <div id='creditCardNumberField'>
+          <input id="creditCardNumber" size="30" maxlength="20" style="width: 250px;" class="ucFormField" type="text" />
+        </div>
+        <div id='creditCardExpLabel'><div class="ucFormLabel"><span class="required">*</span>Expiration Date:</div></div>
+        <div id='creditCardExpField'>
+          <label>
+            <select id="creditCardExpMonth" style="width: 125px;" class="ucFormField">
+                <option value="">Select Month</option>
+                <option value="1">01 - January</option>
+                <option value="2">02 - February</option>
+                <option value="3">03 - March</option>
+                <option value="4">04 - April</option>
+                <option value="5">05 - May</option>
+                <option value="6">06 - June</option>
+                <option value="7">07 - July</option>
+                <option value="8">08 - August</option>
+                <option value="9">09 - September</option>
+                <option value="10">10 - October</option>
+                <option value="11">11 - November</option>
+                <option value="12">12 - December</option>
+            </select>
+          </label>
+          <label><select id="creditCardExpYear" style="width: 120px;" class="ucFormField"></select></label>
+        </div>
+        <div id='creditCardVerificationLabel'><div class="ucFormLabel"><span class="required">*</span><label for='creditCardVerificationNumber'>Card Verification #:</label></div></div>
+        <div id='creditCardVerificationField'>
+          <input id="creditCardVerificationNumber" size="30" maxlength="4" style="width: 100px;" class="ucFormField" type="text" />
+          <span class="ucSmall">&nbsp;
+            <a href="https://secure.ultracart.com/checkout/cvv2/both.jsp">help finding this number</a>
+            <noscript>
+              <a id='cvv2popup' href="https://secure.ultracart.com/checkout/cvv2/both.jsp" target="_new">help finding this number</a>
+            </noscript>
+          </span>
+        </div>
+      </div>
+
+      <!--Below Payment Information-->
+      <!--/Below Payment Information-->
+      <div>
+        <span id='finalizeLink' class="finalize_link">
+          <img src='images/finalizeOrder.gif' alt='Finalize Order' />
+        </span>
+      </div>
+    </div>
+
+    <span id="debugDiv"></span>
+
+	</div><!--/ShoppingCart -->
+
+      <!--Below Outer Table-->
+      <!--/Below Outer Table-->
+
+    <!--Footer-->
+  <!--/Footer-->
+
+  </body>
+</html>
