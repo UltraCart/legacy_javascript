@@ -7,6 +7,9 @@ The only reason this code has been posted to github is to allow you notification
 The main script is here:
 https://github.com/UltraCart/legacy_javascript/blob/master/checkoutapi.js
 
+Documentation:
+http://docs.ultracart.com/display/ucdoc/UltraCart+Advanced+JavaScript+Checkout+API
+
 Better Alternatives
 ===================
 
