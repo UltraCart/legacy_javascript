@@ -9,5 +9,8 @@ https://github.com/UltraCart/legacy_javascript/blob/master/checkoutapi.js
 
 Better Alternatives
 ===================
+
 https://github.com/UltraCart/rest_api
-https://github.com/UltraCart/responsive_checkout  (a mobile friendly implementation of the rest_api)
+
+https://github.com/UltraCart/responsive_checkout  
+(a mobile friendly implementation of the rest_api)
