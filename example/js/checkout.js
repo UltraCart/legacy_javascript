@@ -71,7 +71,7 @@ var merchantCartConfig =
                                       // if you provide a value, it must be an SSL alias that points to secure.ultracart.com (Custom SSL Certificate)
                                       // if isCheckoutPage = false, this value doesn't matter.
 
-  remoteApiUrl: 'http://www.mystore.com:3000/proxy.php', // this url is used for all remote calls. It may point to secure.ultracart.com, a custom SSL site, or your own proxy script.
+  remoteApiUrl: 'http://v3.com/legacy_javascript/example/proxy.php', // this url is used for all remote calls. It may point to secure.ultracart.com, a custom SSL site, or your own proxy script.
                                                          // you may omit this, and the default url is used (points to a path at secure.ultracart.com)
                                                          // see the top of the checkoutapi script for the path info if you have a custom ssl cert.
                                                          // btw, nothing special about port 3000, it's just my development port - Perry.  Get rid of :3000
