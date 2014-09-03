@@ -1,7 +1,9 @@
 legacy_javascript
 =================
 
-UltraCart javascript checkout version 2.  This version is in maintenance mode.  New web sites should use the rest_api.
+UltraCart javascript checkout version 2.  
+**This version is in maintenance mode.  New web sites should use the [rest_api](https://github.com/UltraCart/rest_api).**
+
 The only reason this code has been posted to github is to allow you notification when bug fixes are made to the main script.
 
 The main script is here:
