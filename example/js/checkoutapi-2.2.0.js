@@ -1,4 +1,9 @@
 // Change log
+// 2.2.0 - Updated the jQuery library to 1.11.1.  It was time.  1.4.2 is ancient history, and 1.4.2 had a funky
+// version of jQuery.getJSON, which storeCard() uses.  So it's time to update.
+// Added the storeCard method to upload the credit card number automatically to the token server.
+// The example library now uses json2.js instead jquery-json.
+//
 // 2.1.9 Added method to remove an item at an index instead of by item id.  This will
 // prevent the removal of other items by the same item id.  Also, the add items will
 // now compare the existing items and if the items match based on item id *AND* options,
@@ -2038,6 +2043,10 @@ ultraCart = (function () {
           updateCart({async: true, doNotNotify: true});
         }
 
+        if (field == 'creditCardNumber'){
+          storeCard(el, field);
+        }
+
       }
     }
 
@@ -2048,6 +2057,48 @@ ultraCart = (function () {
     ucLogDebug("[cart] binding " + field + " to element " + element.id);
     jQuery(element).bind('blur.ultraCart', ucMakeBindCartField(field, element));
   }
+
+
+  function storeCard(cardNumberElement, fieldName) {
+
+    var cardNumberField = jQuery(cardNumberElement);
+
+    // Extract the card number from the field
+    var cardNumber = cart[fieldName];
+
+    // If they haven't specified 15 digits yet then don't store it.
+    if (cardNumber.replace(/[^0-9]/g,"").length < 15) {
+      cart.creditCardNumber = cardNumber;
+      return;
+    }
+
+    // Create a masked version of the card number and update the client field
+    var maskedCardNumber = cardNumber;
+    for (var i = 0; i < 12; i++) {
+      maskedCardNumber = maskedCardNumber.replace(/[0-9]/, 'X');
+    }
+
+    // Store the masked one on the cart object to make sure a full card number doesn't go up.
+    cart.creditCardNumber = maskedCardNumber;
+    // Update the form as well
+    cardNumberField.val(maskedCardNumber);
+
+    // Perform the JSONP request to store it (asynchronous by nature)
+    jQuery.getJSON('https://token.ultracart.com/cgi-bin/UCCheckoutAPICardStore?callback=?',
+      {
+        'merchantId': merchantId,
+        'shoppingCartId': cart.cartId,
+        'cardNumber': cardNumber
+      }
+    ).done(function(data) {
+      if (data.success) {
+        cart.creditCardNumber= data.maskedCardNumber;
+        cardNumberField.val(cart.creditCardNumber);
+      }
+    });
+  }
+
+
 
 
   /**
