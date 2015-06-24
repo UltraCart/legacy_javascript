@@ -272,7 +272,7 @@ function setupSecureCreditCardFields() {
   window.ultraCartHostedFieldsDebugMode = false;
   hostedFields = UltraCartHostedFields.setup(jQuery, JSON3, {
     'sessionCredentials': {
-      'merchantId': merchantCartConfig.merchantId, 'shoppingCartId': ultraCart.getCart()
+      'merchantId': merchantCartConfig.merchantId, 'shoppingCartId': ultraCart.getCart().cartId
     },
 //          'cssUrls':[
 //              'https://www.mysite.com/styles.css'
